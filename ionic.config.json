@@ -1,0 +1,7 @@
+{
+  "name": "bd_firebase",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Registro de Platillos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">Registro de Platillos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="list-formulario">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="newPlato.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="text" [(ngModel)]="newPlato.precio"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Calorías</ion-label>
+      <ion-input type="text" [(ngModel)]="newPlato.calorias"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cantidad</ion-label>
+      <ion-input type="text" [(ngModel)]="newPlato.cantidad"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fotografía del Producto</ion-label>
+      <input type="file" (change)="handleFileInput($event)" accept="image/*">
+    </ion-item>
+    
+    <ion-item *ngIf="newPlato.foto">
+      <img [src]="newPlato.foto" alt="Foto del plato" width="100" height="100">
+    </ion-item>
+  </ion-list>
+
+  
+
+  <ion-list>
+    <ion-item *ngFor="let p of Platos">
+      <ion-label>${{ p.precio }}</ion-label>
+      <ion-label>{{ p.nombre }}</ion-label>
+      <ion-label>{{ p.calorias }} kcal</ion-label>
+      <ion-label>x{{ p.cantidad }}</ion-label>
+      <ion-button (click)="delete(p)" color="danger" fill="clear">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="save()" size="small" color="success">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
